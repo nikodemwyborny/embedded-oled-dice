@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "GFX.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,7 +95,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
+  SSD1306_init();
+  GFX_draw_fill_rect(0, 0, 64, 32, WHITE);
+  GFX_draw_fill_rect(65, 33, 64, 32, WHITE);
+  SSD1306_display_repaint();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
