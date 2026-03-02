@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "GFX.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,12 +94,12 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  	  SSD1306_init();
+  	  GFX_draw_fill_rect(0, 0, 64, 32, WHITE);
+  	  GFX_draw_fill_rect(65, 33, 64, 32, WHITE);
+  	  SSD1306_display_repaint();
   /* USER CODE END 2 */
-  SSD1306_init();
-  GFX_draw_fill_rect(0, 0, 64, 32, WHITE);
-  GFX_draw_fill_rect(65, 33, 64, 32, WHITE);
-  SSD1306_display_repaint();
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -158,7 +159,10 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    Button_EXTI_Callback(GPIO_Pin);
+}
 /* USER CODE END 4 */
 
 /**
