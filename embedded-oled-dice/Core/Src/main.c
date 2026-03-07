@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "GFX.h"
 #include "button.h"
+#include "app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,16 +95,18 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  	  SSD1306_init();
-  	  GFX_draw_fill_rect(0, 0, 64, 32, WHITE);
-  	  GFX_draw_fill_rect(65, 33, 64, 32, WHITE);
-  	  SSD1306_display_repaint();
+  	SSD1306_init();
+  	GFX_draw_fill_rect(0, 0, 128, 64,BLACK);
+  	SSD1306_display_repaint();
+
+  	  App_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  App_Logic();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
