@@ -2,7 +2,6 @@
 #include "app.h"
 #include "button.h"
 #include "random.h"
-#include "main.h"
 #include "display.h"
 
 
@@ -24,7 +23,7 @@ void App_Logic(void)
 			RNG_Init(HAL_GetTick());
 			seeded = 1;
 		}
-	uint8_t dice = RNG_Range(1, 6);
-	Display_DrawDice(dice);
+	uint8_t diceValue = RNG_Range(1, 6);
+	Display_DrawDice(diceValue);
 	}
 }
